@@ -4,3 +4,4 @@
 ・git status
 ・git diff
 new line
+ブランチのマージテスト用

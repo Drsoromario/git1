@@ -3,3 +3,4 @@
 ・git commit
 ・git status
 ・git diff
+new line

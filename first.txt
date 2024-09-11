@@ -7,3 +7,4 @@ new line
 ブランチのマージテスト用
 ブランチtest-branchの作成
 ブランチtest-branchの作成をもう一度テスト
+test-branchのテスト(Mainブランチと違くことを確認)

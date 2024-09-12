@@ -4,4 +4,8 @@
 ・git status
 ・git diff
 new line
-gitのテストをもう一度
+ブランチのマージテスト用
+ブランチtest-branchの作成
+ブランチtest-branchの作成をもう一度テスト
+test-branchのテスト(Mainブランチと違くことを確認)
+マージテストマージテスト

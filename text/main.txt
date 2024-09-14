@@ -1,2 +1,3 @@
 main.txtを作成
 git mergeのテスト
+コンフリクトのテスト

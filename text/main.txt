@@ -1,3 +1,4 @@
 main.txtを作成
 git mergeのテスト
 conflitct
+conflictの再テスト

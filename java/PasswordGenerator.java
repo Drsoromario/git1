@@ -15,6 +15,7 @@ public class PasswordGenerator {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int length;
+        int times;
         do{
             System.out.print("The length of password:");
             length = scan.nextInt();
@@ -23,8 +24,13 @@ public class PasswordGenerator {
                 System.out.println("The length of a password is to grater than 15 and smaller than 51");
             }
         }while(length < 15 || length > 51);
-        String password = generatePassword(length);
-        System.out.println("Generated Password: " + password);
+        System.out.print("How many passwords do you want to generate?:");
+        times = scan.nextInt();
+        String[] password = new String[1000];
+        for(int i = 0;i < times;i++){
+            password[i] = generatePassword(length);
+            System.out.println("Generated Password[" +(i + 1) + "] :" + password[i]);
+        }
     }
 
     public static String generatePassword(int length) {

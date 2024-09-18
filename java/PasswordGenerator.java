@@ -9,7 +9,7 @@ public class PasswordGenerator {
     private static final String UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private static final String LOWERCASE = "abcdefghijklmnopqrstuvwxyz";
     private static final String DIGITS = "0123456789";
-    private static final String SYMBOLS = "@#$%&()^+*?<>";
+    private static final String SYMBOLS = "@#$%&()^+*?<>!";
     private static final String ALL_CHARACTERS = UPPERCASE + LOWERCASE + DIGITS + SYMBOLS;
 
     public static void main(String[] args) {

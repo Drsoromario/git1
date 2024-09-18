@@ -1,4 +1,8 @@
 import java.security.SecureRandom;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.stream.Collectors;
 
 public class PasswordGenerator {
     private static final String UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -8,7 +12,7 @@ public class PasswordGenerator {
     private static final String ALL_CHARACTERS = UPPERCASE + LOWERCASE + DIGITS + SYMBOLS;
 
     public static void main(String[] args) {
-        int length = 16; // パスワードの長さを指定（11文字以上50文字以下）
+        int length = 18; // パスワードの長さを指定（11文字以上50文字以下）
         String password = generatePassword(length);
         System.out.println("Generated Password: " + password);
     }

@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.stream.Collectors;
+import java.util.Scanner;
 
 public class PasswordGenerator {
     private static final String UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -12,7 +13,12 @@ public class PasswordGenerator {
     private static final String ALL_CHARACTERS = UPPERCASE + LOWERCASE + DIGITS + SYMBOLS;
 
     public static void main(String[] args) {
-        int length = 18; // パスワードの長さを指定（11文字以上50文字以下）
+        Scanner scan = new Scanner(System.in);
+        int length;
+        do{
+            System.out.print("The length of password:");
+            length = scan.nextInt();
+        }while(length < 11 || length > 50);
         String password = generatePassword(length);
         System.out.println("Generated Password: " + password);
     }

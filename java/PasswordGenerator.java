@@ -29,7 +29,7 @@ public class PasswordGenerator {
         String[] password = new String[1000];
         for(int i = 0;i < times;i++){
             password[i] = generatePassword(length);
-            System.out.println("Generated Password[" +(i + 1) + "] :" + password[i]);
+            System.out.println("Generated Password[" +(i + 1) + "] : " + password[i]);
         }
     }
 

@@ -18,13 +18,17 @@ public class PasswordGenerator {
         do{
             System.out.print("The length of password:");
             length = scan.nextInt();
-        }while(length < 11 || length > 50);
+
+            if(length < 15 || length > 51){
+                System.out.println("The length of a password is to grater than 15 and smaller than 51");
+            }
+        }while(length < 15 || length > 51);
         String password = generatePassword(length);
         System.out.println("Generated Password: " + password);
     }
 
     public static String generatePassword(int length) {
-        if (length < 11 || length > 50) {
+        if (length < 15 || length > 51) {
             throw new IllegalArgumentException("パスワードの長さは11文字以上50文字以下でなければなりません。");
         }
 

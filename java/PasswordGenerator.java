@@ -21,7 +21,7 @@ public class PasswordGenerator {
             length = scan.nextInt();
 
             if(length < 16 || length > 100){
-                System.out.println("The length of a password is to grater than 15 and smaller than 51");
+                System.out.println("The length of a password is to grater than 15 and smaller than 101");
             }
         }while(length < 16 || length > 100);
         System.out.print("How many passwords do you want to generate?:");

@@ -20,10 +20,10 @@ public class PasswordGenerator {
             System.out.print("The length of password:");
             length = scan.nextInt();
 
-            if(length < 16 || length > 51){
+            if(length < 16 || length > 100){
                 System.out.println("The length of a password is to grater than 15 and smaller than 51");
             }
-        }while(length < 16 || length > 51);
+        }while(length < 16 || length > 100);
         System.out.print("How many passwords do you want to generate?:");
         times = scan.nextInt();
         String[] password = new String[1000];
@@ -34,7 +34,7 @@ public class PasswordGenerator {
     }
 
     public static String generatePassword(int length) {
-        if (length < 16 || length > 51) {
+        if (length < 16 || length > 100) {
             throw new IllegalArgumentException("パスワードの長さは11文字以上50文字以下でなければなりません。");
         }
 

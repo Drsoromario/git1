@@ -12,3 +12,4 @@ test-branchのテスト(Mainブランチと違くことを確認)
 git statusコマンドのテスト
 pull request
 <GitHub Flow>
+git fetchのテスト

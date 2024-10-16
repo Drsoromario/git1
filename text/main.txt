@@ -4,4 +4,5 @@ conflitct
 conflictの再テスト
 pullリクエストのテスト
 pullリクエストをテストするために追加
-スペース余分な テスト
+スペース余計なもの  テスト
+conclictテスト

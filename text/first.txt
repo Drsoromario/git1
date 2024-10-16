@@ -13,4 +13,4 @@ git statusコマンドのテスト
 pull request
 <GitHub Flow>
 git fetchのテスト
-コンフリクトのテスト
+conclict test

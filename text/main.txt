@@ -6,3 +6,4 @@ pullリクエストのテスト
 pullリクエストをテストするために追加
 スペース余計なもの  テスト
 conclictテスト
+conflict test

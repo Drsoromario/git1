@@ -10,11 +10,10 @@ import java.util.Base64;
 public class AES256withCopy extends JFrame {
     private JRadioButton encryptRadio, decryptRadio;
     private JPasswordField passwordField;
-    private JTextField visibleField;
     private JTextArea inputArea, outputArea;
     private ButtonGroup modeGroup;
-    private JButton toggleKeyVisibilityBtn;
-    private boolean isKeyVisible = false;
+    private JButton toggleVisibilityBtn;
+    private boolean isPasswordVisible = false;
 
     private static final int ITERATIONS = 100000;
     private static final int KEY_LENGTH = 256;
@@ -32,6 +31,7 @@ public class AES256withCopy extends JFrame {
         JPanel mainPanel = new JPanel(new BorderLayout(10, 10));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
+        // モード選択パネル
         JPanel modePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         encryptRadio = new JRadioButton("暗号化", true);
         decryptRadio = new JRadioButton("復号化");
@@ -42,23 +42,21 @@ public class AES256withCopy extends JFrame {
         modePanel.add(encryptRadio);
         modePanel.add(decryptRadio);
 
+        // 共通鍵入力パネル
         JPanel keyPanel = new JPanel(new BorderLayout(5, 5));
-        JPanel keyInputPanel = new JPanel(new BorderLayout(5, 5));
 
         passwordField = new JPasswordField();
-        visibleField = new JTextField();
-        visibleField.setVisible(false);
+        passwordField.setEchoChar('●'); // エコーキャラクターを黒丸に設定
 
-        toggleKeyVisibilityBtn = new JButton("鍵を表示");
-        toggleKeyVisibilityBtn.addActionListener(e -> toggleKeyVisibility());
+        // 鍵の表示/非表示ボタン
+        toggleVisibilityBtn = new JButton("鍵を表示");
+        toggleVisibilityBtn.addActionListener(e -> togglePasswordVisibility());
 
-        keyInputPanel.add(new JLabel("共通鍵 (7-200文字):"), BorderLayout.NORTH);
-        keyInputPanel.add(passwordField, BorderLayout.CENTER);
-        keyInputPanel.add(visibleField, BorderLayout.CENTER);
+        keyPanel.add(new JLabel("共通鍵 (7-200文字):"), BorderLayout.NORTH);
+        keyPanel.add(passwordField, BorderLayout.CENTER);
+        keyPanel.add(toggleVisibilityBtn, BorderLayout.EAST);
 
-        keyPanel.add(keyInputPanel, BorderLayout.CENTER);
-        keyPanel.add(toggleKeyVisibilityBtn, BorderLayout.EAST);
-
+        // 入力と出力エリア
         inputArea = new JTextArea(8, 20);
         outputArea = new JTextArea(8, 20);
         outputArea.setEditable(false);
@@ -66,6 +64,7 @@ public class AES256withCopy extends JFrame {
         JScrollPane inputScroll = new JScrollPane(inputArea);
         JScrollPane outputScroll = new JScrollPane(outputArea);
 
+        // ボタンパネル
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
         JButton processBtn = new JButton("処理実行");
         JButton copyBtn = new JButton("コピー");
@@ -76,6 +75,7 @@ public class AES256withCopy extends JFrame {
         buttonPanel.add(processBtn);
         buttonPanel.add(copyBtn);
 
+        // メインパネルにコンポーネントを配置
         mainPanel.add(modePanel, BorderLayout.NORTH);
         mainPanel.add(keyPanel, BorderLayout.CENTER);
         mainPanel.add(inputScroll, BorderLayout.WEST);
@@ -85,28 +85,20 @@ public class AES256withCopy extends JFrame {
         add(mainPanel);
     }
 
-    private void toggleKeyVisibility() {
-        if (isKeyVisible) {
-            passwordField.setText(visibleField.getText());
-            visibleField.setVisible(false);
-            passwordField.setVisible(true);
-            toggleKeyVisibilityBtn.setText("鍵を表示");
+    private void togglePasswordVisibility() {
+        if (isPasswordVisible) {
+            passwordField.setEchoChar('●'); // パスワードを隠す
+            toggleVisibilityBtn.setText("鍵を表示");
         } else {
-            visibleField.setText(new String(passwordField.getPassword()));
-            passwordField.setVisible(false);
-            visibleField.setVisible(true);
-            toggleKeyVisibilityBtn.setText("鍵を非表示");
+            passwordField.setEchoChar((char) 0); // パスワードを表示
+            toggleVisibilityBtn.setText("鍵を非表示");
         }
-        isKeyVisible = !isKeyVisible;
-        revalidate();
-        repaint();
+        isPasswordVisible = !isPasswordVisible;
     }
 
     private void processData() {
         try {
-            String password = isKeyVisible
-                ? visibleField.getText()
-                : new String(passwordField.getPassword());
+            String password = new String(passwordField.getPassword());
 
             if (password.length() < 7) {
                 JOptionPane.showMessageDialog(this, "共通鍵は7文字以上必要です", "エラー", JOptionPane.ERROR_MESSAGE);

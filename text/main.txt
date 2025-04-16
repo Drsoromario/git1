@@ -8,3 +8,4 @@ pullリクエストをテストするために追加
 conclictテスト
 conflict test
 git logのブランチのテスト
+testwrite
